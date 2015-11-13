@@ -44,10 +44,10 @@ router.get('/api/v1/memories/years', function (req, res, next) {
         }
         client.query('SELECT DISTINCT year from memories', function (err, result) {
             done();
-            res.json(result.rows);
             if (err) {
                 return console.error('error running query', err);
             }
+            res.json(result.rows);
             console.log('connected to db')
         });
     });
@@ -61,10 +61,10 @@ router.get('/api/v1/memories/:year', function (req, res, next) {
         }
         client.query('SELECT * from memories WHERE year=($1)', [req.params.year], function (err, result) {
             done();
-            res.json(result.rows);
             if (err) {
                 return console.error('error running query', err);
             }
+            res.json(result.rows);
             console.log('connected to db')
         });
     });
